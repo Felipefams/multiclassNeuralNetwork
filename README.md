@@ -29,7 +29,7 @@ the [dataset](https://github.com/Felipefams/multiclassNeuralNetwork/blob/main/co
 7. [Java](https://github.com/Felipefams/multiclassNeuralNetwork/blob/main/src/Main.java) code to make the API calls
 
 the .jar must be in the same folder of the Main.java
-the java code must be run as:
+the java code must be run as:<b> <br>
 `javac -cp json-simple-1.1.jar Main.java && java -cp .:json-simple-1.1.jar Main`
 
 
