@@ -28,7 +28,7 @@ the [dataset](https://github.com/Felipefams/multiclassNeuralNetwork/blob/main/co
 6. test the model
 7. [Java](https://github.com/Felipefams/multiclassNeuralNetwork/blob/main/src/Main.java) code to make the API calls
 
-the .jar must be in the same folder of the Main.java
+you need to download this [.jar](http://www.java2s.com/Code/Jar/j/Downloadjsonsimple11jar.htm) and keep it on the same folder of the Main.java<br>
 the java code must be run as:<b> <br>
 `javac -cp json-simple-1.1.jar Main.java && java -cp .:json-simple-1.1.jar Main`
 
