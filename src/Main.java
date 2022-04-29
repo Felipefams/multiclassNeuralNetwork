@@ -31,7 +31,7 @@ Funciona em 4 passos principais:
 */
 public class Main {
 	// model endpoint
-	// you can find the endpoint in the field "REST Endpoint" in the model's webservice
+	// O endpoint esta presente no campo "REST Endpoint" no servico web do modelo.
     private static final String MODEL_URL = "http://e35623e2-44a2-48ed-acbc-37e9bdd71d7a.eastus2.azurecontainer.io/score";
     
 	// your azure API key
