@@ -29,22 +29,18 @@ Funciona em 4 passos principais:
    contem as caracteristicas de cada audio enviadas, a probabilidade de cada set de caracteristicas
    pertencer a uma classe e a classe prevista.
 */
-
 public class Main {
-    // Endpoint do modelo. Para mais informacoes, ver o seguinte
-    // video no tempo ja marcado: https://youtu.be/jTUvOlWBuVw?t=188.
-    // O endpoint esta presente no campo "REST Endpoint" no servico web do modelo.
+	// model endpoint
+	// you can find the endpoint in the field "REST Endpoint" in the model's webservice
     private static final String MODEL_URL = "http://e35623e2-44a2-48ed-acbc-37e9bdd71d7a.eastus2.azurecontainer.io/score";
-
-    // Chave de API do seu servico na Azure. Para mais informacoes assistir o seguinte
-    // video no tempo ja marcado: https://youtu.be/jTUvOlWBuVw?t=188
-    // A chave esta presente no campo "Primary Key" no servico web do modelo.
+    
+	// your azure API key
+	// thats the key you get on the "Primary key" field
     private static final String API_KEY = "ZzCL04bmMitv8HenuazzYQMDDBoQOJil";
 
     public static void main(String[] Args) throws Exception {
-        // Construimos a nosso objeto HTTP que sera enviado ao servidor do modelo.
+        // Construimos a nosso objeto HTTP que sera enviado ao servidor do modelo. 
         // O `API_KEY` e utilizado nos headers e os dados enviados sao atribuidos ao objeto
-        // na linha 43 por meio da funcao `.sampleData`
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(MODEL_URL))
                 .headers("Content-Type", "application/json", "Authorization", "Bearer " + API_KEY)
@@ -53,10 +49,10 @@ public class Main {
 
         try {
             // Realiza-se a chamada HTTP para o servidor do modelo. O objeto `client` definido na linha 40
-            // chama o metodo `#send` passando o request da linha 41, que e quem contem as informacoes da URL,
+            // chama o metodo `#send` passando o request da linha 41, que e quem contem as informacoes da URL, 
             // autenticacao com a API_KEY e os dados a serem classificados.
             HttpResponse<String> response  = client.send(request, HttpResponse.BodyHandlers.ofString());
-
+            
             // Convertemos a reposta para uma List de objetos de HashMap. Nas linhas 86-111 ha um exemplo de retorno
             // da funcao `.responseMapBody`.
             List<Map<String, Object>> classification = responseMapBody(response.body());
@@ -89,7 +85,7 @@ public class Main {
     /*
     Recebe como argumento o retorno da chamada ao modelo, que e uma string, a
     converte para JSON e depois para uma lista de HashMap.
-
+        
     Exemplo de retorno:
     [
       {
@@ -108,16 +104,16 @@ public class Main {
          "danceability: 8.393,
          "speechiness": 1.0,
          "acousticness": 0.992,
-         "class": "",
+         "class": "", 
          "energy" 1.0
-         "Scored Labels": "correr",
+         "Scored Labels": "correr", 
       },
       {
-        ...
+        ...      
       },
       ...
     ]
-
+    
     Cada HashMap contem as caracteristicas de audio que foram enviadas para a classificacao (liveness,
     tempo, valence, instrumentalness, danceability, speechiness, acousticness, energy), a probabilidade
     delas pertencerem a cada uma das classes (Scored Probabilities_feliz, Scored Probabilities_dormir,
@@ -132,15 +128,15 @@ public class Main {
         // Parseia a resposta em string para JSON
         Object obj = JSONValue.parse(body);
         JSONObject jsonObject = (JSONObject) obj;
-
-        // O retorno do modelo vem dentro da chave `result`
-        JSONArray objs = (JSONArray) jsonObject.get("result");
+        
+        // O retorno do modelo vem dentro da chave `result` 
+        JSONArray objs = (JSONArray) jsonObject.get("result"); 
 
         // Iterar sobre os objetos do `result`, onde cada um representa o resultado da classificacao de um set
         // de caracteristicas de audio do Spotify
         for (Object _obj : objs) {
             hm = new HashMap<>();
-            // Obtem o set de chaves do objeto e itera sobre eles, acessando o valor de cada um
+            // Obtem o set de chaves do objeto e itera sobre eles, acessando o valor de cada um 
             // e o adicionando no dicionario em Java a ser retornado
             for (Object o : ((JSONObject) _obj).keySet()) {
                 String key = (String) o;
