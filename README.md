@@ -1,5 +1,6 @@
 # Azure Multiclass Neural Network
-basic java multiclass neural network hosted in azure
+first experience with basic java multiclass neural network hosted in azure 
+created for an introductory class on the theme. 
 ## Problem
 given some audio characteristics, classify Spotify songs in their proper class.
 we will train the algorithm with various songs and their given class. Playlists
